@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "171365138892",
+    "project_id": "examen-de-manejo-52988",
+    "storage_bucket": "examen-de-manejo-52988.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171365138892:android:0685ba708b8838b2e51d69",
+        "android_client_info": {
+          "package_name": "com.example.examen_manejo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL1wfdUdsexFZU-OV1jR69PHWpG6XZ-Zk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
