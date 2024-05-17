@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
   // Define tus rutas aquí
   final Map<String, WidgetBuilder> _routes = {
     '/': (context) => const LoginPage(),
-    '/home': (context) => const HomeScreen(), 
     '/sign': (context) => const SignUpPage(), 
+    '/home': (context) => const HomeScreen(), 
+    '/quiz': (context) => QuizScreen(), 
+    
   };
 
   @override

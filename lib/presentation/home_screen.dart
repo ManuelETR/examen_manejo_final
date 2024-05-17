@@ -6,7 +6,6 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -14,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFd3bebc), // Color de fondo de la pantalla
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: _buildAppBar(context),
@@ -24,20 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
           _showLogoutDialog(context);
         },
         tooltip: 'Cerrar Sesión',
-        child: const Icon(Icons.logout),
+        backgroundColor: const Color(0xFF844b54),
+        foregroundColor: Colors.white, // Color del icono
+        child: const Icon(Icons.logout), // Icono de cierre de sesión
       ),
     );
   }
 
   Widget _buildAppBar(BuildContext context) {
     return AppBar(
+      backgroundColor: const Color(0xFFac6c34),
       title: const Text(
         'Examen de Manejo',
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+          color: Colors.white,
+        ),
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.person),
+          icon: const Icon(Icons.person, color: Colors.white, size: 35),
           onPressed: () {
             // Aquí puedes agregar la lógica para navegar a la pantalla de perfil
           },
@@ -51,30 +58,61 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton.icon(
+          _buildElevatedButton(
+            context,
             onPressed: () {
               // Aquí puedes agregar la lógica para iniciar el test
+              Navigator.pushReplacementNamed(context, '/quiz');
             },
-            icon: const Icon(Icons.assignment_rounded),
-            label: const Text('Hacer el Test'),
+            icon: const Icon(Icons.assignment_rounded, size: 35),
+            label: 'Hacer el Test',
           ),
-          const SizedBox(height: 20),
-          ElevatedButton.icon(
+          const SizedBox(height: 95), // Separación aumentada
+          _buildElevatedButton(
+            context,
             onPressed: () {
               // Aquí puedes agregar la lógica para ver los resultados previos
             },
-            icon: const Icon(Icons.history_rounded),
-            label: const Text('Ver Resultados Previos'),
+            icon: const Icon(Icons.history_rounded, size: 35),
+            label: 'Ver Resultados',
           ),
-          const SizedBox(height: 20),
-          ElevatedButton.icon(
+          const SizedBox(height: 95), // Separación aumentada
+          _buildElevatedButton(
+            context,
             onPressed: () {
               // Aquí puedes agregar la lógica para la opción adicional
             },
-            icon: const Icon(Icons.lightbulb_rounded),
-            label: const Text('Consejos y Recomendaciones'),
+            icon: const Icon(Icons.lightbulb_rounded, size: 35),
+            label: 'Información',
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildElevatedButton(BuildContext context,
+      {required VoidCallback onPressed, required Icon icon, required String label}) {
+    return SizedBox(
+      width: 250, // Ancho del botón aumentado
+      height: 80, // Alto del botón aumentado
+      child: ElevatedButton.icon(
+        onPressed: onPressed,
+        icon: IconTheme(
+          data: const IconThemeData(color: Colors.white), // Color del icono
+          child: icon,
+        ),
+        label: Text(
+          label,
+          style: const TextStyle(
+            inherit: true, // Asegura que el estilo de texto herede propiedades
+            color: Colors.white, // Color del texto
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF844b54), // Color del botón
+        ),
       ),
     );
   }
