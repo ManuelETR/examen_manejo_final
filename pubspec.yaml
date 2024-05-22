@@ -39,6 +39,7 @@ dependencies:
   fluttertoast: ^8.2.5
   font_awesome_flutter: ^10.7.0
   google_sign_in: ^6.2.1
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -61,6 +62,25 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/LogoBC.png
+    - assets/questions/question1.png
+    - assets/questions/question2.png
+    - assets/questions/question3.png
+    - assets/questions/question4.png
+    - assets/questions/question5.png
+    - assets/questions/question6.png
+    - assets/questions/question7.png
+    - assets/questions/question8.png
+    - assets/questions/question9.png
+    - assets/questions/question10.png
+    - assets/questions/question11.png
+    - assets/questions/question12.png
+    - assets/questions/question13.png
+    - assets/questions/question14.png
+    - assets/questions/question15.png
+    - assets/questions/question16.png
+    - assets/questions/question17.png
+    - assets/questions/question18.png
+    - assets/questions/question19.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

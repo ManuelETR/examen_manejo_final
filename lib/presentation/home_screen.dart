@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFd3bebc), // Color de fondo de la pantalla
+      backgroundColor: const Color.fromARGB(255, 215, 183, 155), // Color de fondo de la pantalla
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: _buildAppBar(context),
@@ -33,7 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFFac6c34),
+      automaticallyImplyLeading: false, // Evita que se genere una flecha automática de regreso
+      backgroundColor: const Color(0xFF844b54),
       title: const Text(
         'Examen de Manejo',
         style: TextStyle(
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             context,
             onPressed: () {
               // Aquí puedes agregar la lógica para iniciar el test
-              Navigator.pushReplacementNamed(context, '/quiz');
+              Navigator.pushReplacementNamed(context, '/quizz');
             },
             icon: const Icon(Icons.assignment_rounded, size: 35),
             label: 'Hacer el Test',
@@ -72,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
             context,
             onPressed: () {
               // Aquí puedes agregar la lógica para ver los resultados previos
+              Navigator.pushReplacementNamed(context, '/results');
             },
             icon: const Icon(Icons.history_rounded, size: 35),
             label: 'Ver Resultados',
@@ -116,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
+//backgroundColor: const Color(0xFF844b54),
   void _showLogoutDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -156,3 +158,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

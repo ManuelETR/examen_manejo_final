@@ -18,21 +18,29 @@ class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    // Verificar si hay un usuario conectado y cerrar automáticamente la sesión si es así
-    _checkAndSignOut();
-  }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _checkAndSignOut();
+  }
+
+  Future<void> _checkAndSignOut() async {
+    final currentUser = _firebaseAuth.currentUser;
+    if (currentUser != null) {
+      await _firebaseAuth.signOut();
+      await _googleSignIn.signOut();
+    }
   }
 
   @override
@@ -165,6 +173,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+
   void _signIn() async {
     setState(() {
       _isSigning = true;
@@ -209,13 +218,6 @@ class _LoginPageState extends State<LoginPage> {
       }
     } catch (e) {
       showToast(message: "Ocurrió un error $e");
-    }
-  }
-
-  // Verificar si hay un usuario conectado y cerrar automáticamente la sesión si es así
-  void _checkAndSignOut() async {
-    if (_firebaseAuth.currentUser != null) {
-      await _firebaseAuth.signOut();
     }
   }
 }

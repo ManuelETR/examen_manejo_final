@@ -18,14 +18,14 @@ class MyApp extends StatelessWidget {
     '/': (context) => const LoginPage(),
     '/sign': (context) => const SignUpPage(), 
     '/home': (context) => const HomeScreen(), 
-    '/quiz': (context) => QuizScreen(), 
-    
+    '/quizz': (context) => QuizScreen(),
+    '/results': (context) => ResultsScreen(),
   };
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tu Proyecto de Examen',
+      title: 'Proyecto de Examen',
       debugShowCheckedModeBanner: false,
       initialRoute: '/', // Cambia '/' por la ruta de tu pantalla de inicio de sesión
       routes: _routes,
