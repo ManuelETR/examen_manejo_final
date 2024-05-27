@@ -4,13 +4,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({super.key});
 
-  Future<Map<String, int>> _loadResults() async {
+  Future<Map<String, dynamic>> _loadResultsAndProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int correctAnswers = prefs.getInt('correctAnswers') ?? 0;
     int incorrectAnswers = prefs.getInt('incorrectAnswers') ?? 0;
+    String name = prefs.getString('name') ?? 'N/A';
+    String phone = prefs.getString('phone') ?? 'N/A';
+    String email = prefs.getString('email') ?? 'N/A';
+    String age = prefs.getString('age') ?? 'N/A';
+    String gender = prefs.getString('gender') ?? 'N/A';
+
     return {
       'correctAnswers': correctAnswers,
       'incorrectAnswers': incorrectAnswers,
+      'name': name,
+      'phone': phone,
+      'email': email,
+      'age': age,
+      'gender': gender,
     };
   }
 
@@ -35,8 +46,8 @@ class ResultsScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 215, 183, 155),
-      body: FutureBuilder<Map<String, int>>(
-        future: _loadResults(),
+      body: FutureBuilder<Map<String, dynamic>>(
+        future: _loadResultsAndProfile(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -45,6 +56,12 @@ class ResultsScreen extends StatelessWidget {
           } else {
             int correctAnswers = snapshot.data!['correctAnswers']!;
             int incorrectAnswers = snapshot.data!['incorrectAnswers']!;
+            String name = snapshot.data!['name'];
+            String phone = snapshot.data!['phone'];
+            String email = snapshot.data!['email'];
+            String age = snapshot.data!['age'];
+            String gender = snapshot.data!['gender'];
+
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -57,6 +74,31 @@ class ResultsScreen extends StatelessWidget {
                       fontSize: 24,
                       color: Color(0xFF844b54),
                     ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'Nombre: $name',
+                    style: const TextStyle(fontSize: 18, color: Color(0xFF844b54)),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Teléfono: $phone',
+                    style: const TextStyle(fontSize: 18, color: Color(0xFF844b54)),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Correo Electrónico: $email',
+                    style: const TextStyle(fontSize: 18, color: Color(0xFF844b54)),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Edad: $age',
+                    style: const TextStyle(fontSize: 18, color: Color(0xFF844b54)),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Género: $gender',
+                    style: const TextStyle(fontSize: 18, color: Color(0xFF844b54)),
                   ),
                   const SizedBox(height: 20),
                   Text(

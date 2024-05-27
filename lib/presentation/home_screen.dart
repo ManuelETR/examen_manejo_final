@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         IconButton(
           icon: const Icon(Icons.person, color: Colors.white, size: 35),
           onPressed: () {
-            // Aquí puedes agregar la lógica para navegar a la pantalla de perfil
+            Navigator.pushNamed(context, '/profile');
           },
         ),
       ],
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _buildElevatedButton(
             context,
             onPressed: () {
-              // Aquí puedes agregar la lógica para la opción adicional
+              Navigator.pushReplacementNamed(context, '/guide');
             },
             icon: const Icon(Icons.lightbulb_rounded, size: 35),
             label: 'Información',

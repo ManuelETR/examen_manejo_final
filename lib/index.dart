@@ -5,3 +5,5 @@ export 'package:examen_manejo/presentation/login/sign.dart';
 export 'package:examen_manejo/presentation/home_screen.dart';
 export 'package:examen_manejo/presentation/questions/quizz_screen.dart';
 export 'package:examen_manejo/presentation/results.dart';
+export 'package:examen_manejo/presentation/profile_screen.dart';
+export 'package:examen_manejo/presentation/guide_screen.dart';

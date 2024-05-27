@@ -14,6 +14,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // Evita que se genere una flecha automática de regreso
         title: const Text(
           'Examen de Manejo',
           style: TextStyle(

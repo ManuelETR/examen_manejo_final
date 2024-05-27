@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
     '/sign': (context) => const SignUpPage(), 
     '/home': (context) => const HomeScreen(), 
     '/quizz': (context) => QuizScreen(),
-    '/results': (context) => ResultsScreen(),
+    '/results': (context) => const ResultsScreen(),
+    '/profile': (context) => const ProfileScreen(),
+    '/guide': (context) => const GuideScreen(),
   };
 
   @override
